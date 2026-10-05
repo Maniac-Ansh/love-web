@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Love Quest ✨ Chapter 1: The Verification Gate</title>
+  <meta name="description" content="An interactive romantic quest created with all my love.">
+  <meta name="theme-color" content="#0d0517">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff4d79'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>">
+</head>
+<body>
+  <!-- Ambient Cosmic Canvas -->
+  <canvas id="game-canvas"></canvas>
+
+  <!-- Top Game HUD (Heads Up Display) -->
+  <header class="game-hud">
+    <div class="hud-left">
+      <div class="player-badge">
+        <span class="player-avatar">👑</span>
+        <div class="player-info">
+          <span class="hud-label">PLAYER 1</span>
+          <strong class="player-name" id="hud-player-name">Riuu 👑</strong>
+        </div>
+      </div>
+      <div class="health-container" title="Love Meter: Infinite">
+        <span class="hud-icon">💖</span>
+        <div class="health-bar-track">
+          <div class="health-bar-fill" id="love-meter-fill"></div>
+        </div>
+        <span class="hud-stat-text" id="love-meter-text">100%</span>
+      </div>
+    </div>
+
+    <div class="hud-center">
+      <div class="quest-pill">
+        <span class="quest-tag">ROOM</span>
+        <span class="quest-title" id="hud-quest-name">Welcome to My Heart</span>
+      </div>
+    </div>
+
+    <div class="hud-right">
+      <button class="sound-toggle-btn" id="sound-btn" title="Toggle Sound FX & Music" aria-label="Toggle sound">
+        <span id="sound-icon">🔊</span>
+      </button>
+      <button class="settings-btn" id="config-btn" title="Edit Her Name" aria-label="Settings">
+        ⚙️
+      </button>
+    </div>
+  </header>
+
+  <!-- Game Stage Container -->
+  <main class="game-stage">
+    
+    <!-- WELCOME SCREEN: TOUR OF MY HEART -->
+    <section class="stage-screen active" id="screen-welcome">
+      <div class="screen-content">
+        <div class="welcome-card">
+          <!-- Glowing Floating Title Emblem -->
+          <div class="emblem-wrapper">
+            <div class="emblem-glow"></div>
+            <div class="emblem-heart">💖</div>
+            <div class="emblem-ring"></div>
+          </div>
+
+          <span class="arcade-tag">★ PRIVATE EXPERIENCE ★</span>
+          <h1 class="welcome-quote">"Welcome to my heart... here is the tour of my heart."</h1>
+          <p class="welcome-text">
+            Every beat of this heart carries your name. Every chamber and corner was created just for you.
+          </p>
+          <button class="arcade-btn yes-btn" id="btn-start-tour">
+            <span>START THE TOUR 💖</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOOR 1: THE SACRED VERIFICATION GATE -->
+    <section class="stage-screen" id="screen-door-1" style="display: none;">
+      <div class="screen-content">
+        
+        <div class="arcade-title-box">
+          <span class="arcade-tag">★ DOOR 1 ★</span>
+          <h1 class="game-title">
+            DOOR 1: THE <br>
+            <span class="gradient-text">SACRED GATE</span>
+          </h1>
+        </div>
+
+        <!-- Dialogue Box with Gatekeeper Message -->
+        <div class="rpg-dialogue-box">
+          <div class="dialogue-speaker">
+            <span class="speaker-avatar">💌</span>
+            <span class="speaker-name">Heart Gatekeeper</span>
+          </div>
+          <p class="dialogue-text" id="door1-dialogue-text">
+            "Wait... only one person can enter here... verify it's you!"
+          </p>
+        </div>
+
+        <!-- Step 1: Prettiest Girl Question & Runaway Button -->
+        <div class="verification-card" id="door1-pretest-card">
+          <h2 class="verify-question">
+            Are you the most gorgeous and sweetest girl in the entire universe?
+          </h2>
+
+          <div class="verify-actions" id="verify-button-area">
+            <button class="arcade-btn yes-btn" id="btn-verify-yes">
+              <span>YES, OBVIOUSLY! 💖</span>
+            </button>
+            <button class="arcade-btn no-btn" id="btn-verify-no">
+              <span>NO 🙈</span>
+            </button>
+          </div>
+
+          <p class="playful-hint" id="no-button-hint">
+            (P.S. Try clicking "NO" if you dare...)
+          </p>
+        </div>
+
+        <!-- Step 2: Final Verification Password Question (Card 1) -->
+        <div class="verification-card" id="door1-password-card" style="display: none;">
+          <h2 class="verify-question">
+            Okay, but final verification is done only after a question...
+          </h2>
+          <p class="password-prompt-sub">
+            "This is the password to enter... check your card 1"
+          </p>
+
+          <form id="door1-password-form" class="password-form-box">
+            <div class="input-lock-wrap">
+              <span class="lock-icon">🔒</span>
+              <input type="text" id="door1-password-input" placeholder="Enter password from card 1..." autocomplete="off" required>
+            </div>
+            <button type="submit" class="arcade-btn yes-btn" id="btn-submit-door1-password">
+              <span>UNLOCK DOOR 1 🗝️</span>
+            </button>
+          </form>
+
+          <!-- Warning/Error Message if wrong password -->
+          <div class="error-banner-box" id="door1-error-banner" style="display: none;">
+            <span class="err-icon">⚠️</span>
+            <p id="door1-error-text">
+              sorry only one person in the world can enter here... others go and fuck off.. don't dare to come here again
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3: Success Screen (Screen turns Light Pink with Heartfelt Message) -->
+        <div class="gate-unlocked-card pink-glow-card" id="door1-success-card" style="display: none;">
+          <div class="success-banner">
+            <span class="badge-icon">🌸</span>
+            <h3>DOOR 1 UNLOCKED: WELCOME RIUU 💖</h3>
+          </div>
+
+          <div class="heartfelt-message-box">
+            <p class="heartfelt-message">
+              "This is exactly the way you made my life... you brought light, color, flowers, and love into my entire universe. Everything bloomed the day you walked into my world. Welcome to my heart, my love."
+            </p>
+          </div>
+
+          <button class="arcade-btn next-level-btn" id="btn-start-level-2">
+            <span>ENTER DOOR 2: THE HEART RESONANCE 💖</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DOOR 2: THE HEART RESONANCE (PERCENTAGE MATCH QUIZ) -->
+    <section class="stage-screen" id="screen-door-2" style="display: none;">
+      <div class="screen-content">
+        
+        <div class="arcade-title-box">
+          <span class="arcade-tag">★ DOOR 2 ★</span>
+          <h1 class="game-title">
+            DOOR 2: THE <br>
+            <span class="gradient-text">HEART RESONANCE</span>
+          </h1>
+          <p class="game-tagline">
+            "Select the answer from your heart... let's discover our love & match percentage! 💖"
+          </p>
+        </div>
+
+        <!-- Quiz Progress & Stats Bar -->
+        <div class="quiz-status-bar">
+          <div class="stat-pill">
+            <span class="stat-icon">💌</span>
+            <span class="stat-text" id="quiz-progress-text">Question 1 of 10</span>
+          </div>
+          <div class="stat-pill match-pill">
+            <span class="stat-icon">💖</span>
+            <span class="stat-text" id="quiz-match-counter">Match: 0%</span>
+          </div>
+        </div>
+
+        <div class="quiz-progress-track">
+          <div class="quiz-progress-fill" id="quiz-progress-fill" style="width: 10%;"></div>
+        </div>
+
+        <!-- Interactive Question Card -->
+        <div class="quiz-card" id="quiz-question-card">
+          <div class="quiz-hint-tag" id="quiz-hint-tag" style="display: none;">
+            <span class="hint-icon">💡</span>
+            <span class="hint-text" id="quiz-hint-text"></span>
+          </div>
+
+          <h2 class="quiz-question-text" id="quiz-question-text">Loading question...</h2>
+
+          <div class="quiz-options-container" id="quiz-options-area">
+            <button class="quiz-opt-btn" id="btn-opt-0" data-index="0">
+              <span class="opt-prefix">A</span>
+              <span class="opt-content" id="btn-opt-0-text">Option A</span>
+              <span class="opt-icon-status" id="btn-opt-0-status"></span>
+            </button>
+            <button class="quiz-opt-btn" id="btn-opt-1" data-index="1">
+              <span class="opt-prefix">B</span>
+              <span class="opt-content" id="btn-opt-1-text">Option B</span>
+              <span class="opt-icon-status" id="btn-opt-1-status"></span>
+            </button>
+          </div>
+
+          <!-- Dynamic Sweet Explanation / Reaction Box -->
+          <div class="quiz-reaction-banner" id="quiz-reaction-banner" style="display: none;">
+            <span class="reaction-avatar" id="quiz-reaction-icon">✨</span>
+            <p class="reaction-message" id="quiz-reaction-text"></p>
+          </div>
+        </div>
+
+        <!-- Door 2 Victory / Results Card (Revealed after Question 10) -->
+        <div class="quiz-result-card" id="quiz-result-card" style="display: none;">
+          <div class="success-banner">
+            <span class="badge-icon">🌸</span>
+            <h3>DOOR 2: RESONANCE VERIFICATION</h3>
+          </div>
+
+          <!-- Pouring Liquid Colors Heart -->
+          <div class="pouring-heart-container">
+            <!-- Pouring Stream From Above -->
+            <div class="pouring-stream-wrap" id="pouring-stream-wrap">
+              <div class="pouring-stream"></div>
+              <div class="pouring-splash"></div>
+            </div>
+
+            <!-- SVG Liquid Heart Frame -->
+            <div class="heart-liquid-frame">
+              <svg class="liquid-heart-svg" viewBox="0 0 100 100">
+                <defs>
+                  <!-- Heart Clipping Shape -->
+                  <clipPath id="heart-shape-clip">
+                    <path d="M 50 86.5 C 50 86.5 13 58 13 32 C 13 18 24 8 36.5 8 C 43.5 8 48 12.5 50 16.5 C 52 12.5 56.5 8 63.5 8 C 76 8 87 18 87 32 C 87 58 50 86.5 50 86.5 Z" />
+                  </clipPath>
+
+                  <!-- Liquid Fill Gradient: Gold to Radiant Pink to Deep Ruby -->
+                  <linearGradient id="liquid-flow-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#fcd34d" />
+                    <stop offset="28%" stop-color="#ff758c" />
+                    <stop offset="68%" stop-color="#ff4d79" />
+                    <stop offset="100%" stop-color="#9f1239" />
+                  </linearGradient>
+
+                  <!-- Surface Wave Highlight -->
+                  <linearGradient id="wave-highlight-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#fcd34d" stop-opacity="0.9" />
+                    <stop offset="50%" stop-color="#ffffff" stop-opacity="0.95" />
+                    <stop offset="100%" stop-color="#ff758c" stop-opacity="0.9" />
+                  </linearGradient>
+                </defs>
+
+                <!-- Heart Glass Vessel Background -->
+                <path class="heart-vessel-bg" d="M 50 86.5 C 50 86.5 13 58 13 32 C 13 18 24 8 36.5 8 C 43.5 8 48 12.5 50 16.5 C 52 12.5 56.5 8 63.5 8 C 76 8 87 18 87 32 C 87 58 50 86.5 50 86.5 Z" />
+
+                <!-- Liquid Fill Group Clipped by Heart -->
+                <g clip-path="url(#heart-shape-clip)">
+                  <!-- Main Rising Liquid Body -->
+                  <rect id="heart-liquid-body" class="heart-liquid-body" x="0" y="87" width="100" height="100" fill="url(#liquid-flow-grad)" />
+
+                  <!-- Surface Waves -->
+                  <g id="heart-liquid-wave-group" class="heart-liquid-wave-group" transform="translate(0, 87)">
+                    <path class="wave-shape wave-back" d="M -100 0 Q -75 4, -50 0 T 0 0 T 50 0 T 100 0 T 150 0 T 200 0 V 40 H -100 Z" fill="rgba(255, 77, 121, 0.55)" />
+                    <path class="wave-shape wave-front" d="M -100 0 Q -75 -4, -50 0 T 0 0 T 50 0 T 100 0 T 150 0 T 200 0 V 40 H -100 Z" fill="url(#wave-highlight-grad)" />
+                  </g>
+                </g>
+
+                <!-- Glass Outline & Glossy Stroke -->
+                <path class="heart-vessel-stroke" d="M 50 86.5 C 50 86.5 13 58 13 32 C 13 18 24 8 36.5 8 C 43.5 8 48 12.5 50 16.5 C 52 12.5 56.5 8 63.5 8 C 76 8 87 18 87 32 C 87 58 50 86.5 50 86.5 Z" />
+              </svg>
+
+              <!-- Percentage Number Right in the Heart's Center -->
+              <div class="heart-number-overlay">
+                <span class="heart-pct-value" id="heart-percentage-val">0%</span>
+                <span class="heart-pct-sublabel">MATCH COMPATIBILITY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- THE PERFECT MATCH Grand Celebration Message -->
+          <div class="perfect-match-banner" id="perfect-match-banner">
+            <div class="pm-sparkles-row">✨ 💖 ✨</div>
+            <h2 class="perfect-match-title" id="perfect-match-title">THE PERFECT MATCH</h2>
+            <p class="perfect-match-desc" id="perfect-match-desc">
+              "Every single beat of my heart resonates with yours. You are my once-in-a-lifetime soulmate, Riuu."
+            </p>
+          </div>
+
+          <div class="match-breakdown-pills">
+            <div class="breakdown-pill">
+              <span class="bp-icon">🎯</span>
+              <span class="bp-text" id="bp-matches-text">10 / 10 Answers Matched</span>
+            </div>
+            <div class="breakdown-pill">
+              <span class="bp-icon">🔥</span>
+              <span class="bp-text">Resonance: 100% Soulmate</span>
+            </div>
+          </div>
+
+          <div class="victory-actions">
+            <button class="arcade-btn next-level-btn" id="btn-start-door-3">
+              <span>ENTER DOOR 3: THE SACRED BOND 🗝️</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DOOR 3: THE SACRED BOND & ZERO FEET APART -->
+    <section class="stage-screen" id="screen-door-3" style="display: none;">
+      <div class="screen-content">
+        
+        <!-- Header Title Box -->
+        <div class="arcade-title-box" id="door3-title-box">
+          <span class="arcade-tag">★ DOOR 3 ★</span>
+          <h1 class="game-title">
+            DOOR 3: THE <br>
+            <span class="gradient-text">SACRED BOND</span>
+          </h1>
+        </div>
+
+        <!-- Dialogue Box -->
+        <div class="rpg-dialogue-box" id="door3-dialogue-box">
+          <div class="dialogue-speaker">
+            <span class="speaker-avatar">💌</span>
+            <span class="speaker-name">Heart Gatekeeper</span>
+          </div>
+          <p class="dialogue-text" id="door3-dialogue-text">
+            "Wait... this chamber requires the sacred code. Check your Card 3!"
+          </p>
+        </div>
+
+        <!-- Door 3 Password Card -->
+        <div class="verification-card" id="door3-password-card">
+          <h2 class="verify-question">
+            Enter the secret code to unlock our special memory...
+          </h2>
+          <p class="password-prompt-sub">
+            💡 Hint: Check your card 3
+          </p>
+
+          <form id="door3-password-form" class="password-form-box">
+            <div class="input-lock-wrap">
+              <span class="lock-icon">🔒</span>
+              <input type="text" id="door3-password-input" placeholder="Enter password from card 3..." autocomplete="off" required>
+            </div>
+            <button type="submit" class="arcade-btn yes-btn" id="btn-submit-door3-password">
+              <span>UNLOCK DOOR 3 🗝️</span>
+            </button>
+          </form>
+
+          <!-- Error banner for Door 3 -->
+          <div class="error-banner-box" id="door3-error-banner" style="display: none;">
+            <span class="err-icon">⚠️</span>
+            <p id="door3-error-text">
+              Card 3 code does not match! Look closely at card 3, my love 💕
+            </p>
+          </div>
+        </div>
+
+        <!-- Door 3 Walking Scene (Revealed upon entering password) -->
+        <div class="couple-walk-scene" id="door3-walk-scene" style="display: none;">
+          <div class="scene-sky-decor">
+            <div class="twilight-stars">✨ 🌟 ✨ 💫 ✨</div>
+            <div class="twilight-moon">🌙</div>
+          </div>
+
+          <div class="walk-hint-pill" id="walk-hint-pill">
+            <span class="hint-pulse-dot"></span>
+            <span>🎒 Click the bag between us to unzip our memories!</span>
+          </div>
+
+          <!-- Couple Walking Animation Stage -->
+          <div class="couple-animation-wrap" id="couple-animation-wrap">
+            
+            <!-- Boy Character (Him) -->
+            <div class="character-figure boy-char" id="boy-figure">
+              <div class="char-avatar-head">
+                <span class="char-face">👦🏻</span>
+                <span class="char-heart-thought">💭💖</span>
+              </div>
+              <div class="char-body">
+                <div class="char-torso boy-coat"></div>
+                <div class="char-arm arm-right boy-arm-to-bag">
+                  <div class="char-hand"></div>
+                </div>
+              </div>
+              <div class="char-legs">
+                <div class="leg leg-left boy-leg-l"></div>
+                <div class="leg leg-right boy-leg-r"></div>
+              </div>
+              <div class="char-shadow"></div>
+              <span class="char-name-tag">Him</span>
+            </div>
+
+            <!-- School Bag in Between -->
+            <div class="couple-bag-container" id="couple-bag-container" title="Click to open the bag!">
+              <!-- Left Strap held by Boy -->
+              <div class="bag-strap strap-left"></div>
+              <!-- Right Strap held by Girl -->
+              <div class="bag-strap strap-right"></div>
+              
+              <!-- The Backpack Body -->
+              <div class="school-backpack" id="school-backpack">
+                <div class="backpack-handle"></div>
+                <div class="backpack-body">
+                  <div class="backpack-pocket">
+                    <span class="backpack-patch">💌</span>
+                  </div>
+                  <!-- Zipper Chain with Heart Puller -->
+                  <div class="backpack-zipper" id="backpack-zipper">
+                    <div class="zipper-track"></div>
+                    <div class="zipper-puller" id="zipper-puller">💖</div>
+                  </div>
+                </div>
+                <div class="backpack-glow-pulse"></div>
+              </div>
+              <div class="bag-shadow"></div>
+            </div>
+
+            <!-- Girl Character (Riuu) -->
+            <div class="character-figure girl-char" id="girl-figure">
+              <div class="char-avatar-head">
+                <span class="char-crown">👑</span>
+                <span class="char-face">👧🏻</span>
+                <span class="char-blush">🌸</span>
+              </div>
+              <div class="char-body">
+                <div class="char-torso girl-dress"></div>
+                <div class="char-arm arm-left girl-arm-to-bag">
+                  <div class="char-hand"></div>
+                </div>
+              </div>
+              <div class="char-legs">
+                <div class="leg leg-left girl-leg-l"></div>
+                <div class="leg leg-right girl-leg-r"></div>
+              </div>
+              <div class="char-shadow"></div>
+              <span class="char-name-tag">Riuu 👑</span>
+            </div>
+
+          </div>
+
+          <!-- Walking Road Ground -->
+          <div class="walking-ground">
+            <div class="ground-line"></div>
+            <div class="ground-sparkles">✨ &nbsp; 🌸 &nbsp; ✨ &nbsp; 🌸 &nbsp; ✨</div>
+          </div>
+        </div>
+
+        <!-- Fullscreen Sea of Hearts Overlay (Erupts from bag to cover screen) -->
+        <canvas id="hearts-sea-canvas" class="hearts-sea-canvas" style="display: none;"></canvas>
+
+        <!-- Heartfelt Reveal Message Card ("I want to stay 0 feet apart from you...") -->
+        <div class="zero-feet-message-card" id="zero-feet-message-card" style="display: none;">
+          <div class="zf-badge-wrap">
+            <span class="zf-icon">♾️</span>
+            <span class="zf-tag">ZERO DISTANCE FOREVER</span>
+          </div>
+
+          <h2 class="zf-main-quote">
+            "I want to stay 0 feet apart from you..."
+          </h2>
+
+          <div class="zf-prose-box">
+            <p class="zf-prose-text">
+              They say <em>Five Feet Apart</em> is a story of longing and distance... but my heart refuses any space between us.
+            </p>
+            <p class="zf-prose-highlight">
+              No inches, no miles, no barriers in this universe. I want you right in my arms, holding your hands, walking together through every chapter of life with zero distance between our souls.
+            </p>
+          </div>
+
+          <div class="zf-signature">
+            <span>Always & Forever Yours 💖</span>
+          </div>
+
+          <div class="victory-actions">
+            <button class="arcade-btn next-level-btn" id="btn-start-door-4">
+              <span>CONTINUE TO DOOR 4 🗝️</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LEVEL 4 PLACEHOLDER -->
+    <section class="stage-screen" id="level-4" style="display: none;">
+      <div class="screen-content">
+        <div class="coming-soon-box">
+          <span class="cs-icon">🗝️</span>
+          <h2>CHAPTER 4: COMING SOON</h2>
+          <p>Ready to build our next romantic chapter!</p>
+          <button class="arcade-btn secondary" id="btn-back-to-door-3">
+            <span>← Back to Door 3</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Player Name Personalization Modal -->
+  <div class="modal-backdrop" id="name-modal" style="display: none;">
+    <div class="modal-box">
+      <h3>Player Customization</h3>
+      <p>Enter your partner's name or nickname for the game HUD:</p>
+      <input type="text" id="partner-name-input" placeholder="e.g. Maya, Princess, Sophia" maxlength="20">
+      <div class="modal-buttons">
+        <button class="arcade-btn secondary" id="close-modal-btn">Cancel</button>
+        <button class="arcade-btn yes-btn" id="save-name-btn">Save Name ✨</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

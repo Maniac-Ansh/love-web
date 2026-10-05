@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Flutter (Edge Web)",
+      "request": "launch",
+      "type": "dart",
+      "args": ["-d", "edge"]
+    },
+    {
+      "name": "Flutter (Windows)",
+      "request": "launch",
+      "type": "dart",
+      "args": ["-d", "windows"]
+    }
+  ]
+}

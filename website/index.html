@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Favorite Person In The World ✨</title>
+  <meta name="description" content="A special, romantic digital haven dedicated to the most wonderful girl in the universe.">
+  <meta name="theme-color" content="#0d0714">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Dancing+Script:wght@500;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff4d79'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>">
+</head>
+<body>
+  <!-- Interactive Cosmic Canvas: Twinkling Starlight & Rose Petals -->
+  <canvas id="cosmic-canvas"></canvas>
+
+  <!-- Ambient Soundscapes & Controls Bar -->
+  <nav class="glass-nav">
+    <div class="nav-brand">
+      <span class="heart-pulse">💖</span>
+      <span class="brand-text" id="nav-couple-names">Us • Forever</span>
+    </div>
+    <div class="nav-actions">
+      <button id="music-toggle-btn" class="glass-btn audio-btn" title="Toggle romantic background melody" aria-label="Toggle background music">
+        <span class="audio-icon" id="music-icon">🎵</span>
+        <span class="audio-text" id="music-status">Play Melody</span>
+        <div class="sound-wave" id="sound-wave">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </button>
+
+      <button id="open-settings-btn" class="glass-btn icon-btn" title="Personalize website" aria-label="Customize settings">
+        ⚙️
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Experience Wrapper -->
+  <main class="page-container">
+    
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="badge-pill">
+        <span class="badge-dot"></span>
+        <span id="hero-badge-text">A Little Corner Of The Universe For You</span>
+      </div>
+
+      <h1 class="hero-title">
+        To The Love Of My Life, <br>
+        <span class="gradient-text glow" id="her-display-name">My Beautiful Girl</span>
+      </h1>
+
+      <p class="hero-subtitle" id="hero-quote">
+        "In a sky full of billions of stars, my heart will always look for you."
+      </p>
+
+      <!-- Live Romance Counter -->
+      <div class="counter-card-container">
+        <div class="counter-header">
+          <span class="counter-icon">⏳</span>
+          <span id="counter-label-text">Falling More In Love Every Second</span>
+        </div>
+        <div class="counter-grid">
+          <div class="counter-box">
+            <span class="counter-number" id="count-days">0</span>
+            <span class="counter-unit">Days</span>
+          </div>
+          <div class="counter-separator">:</div>
+          <div class="counter-box">
+            <span class="counter-number" id="count-hours">00</span>
+            <span class="counter-unit">Hours</span>
+          </div>
+          <div class="counter-separator">:</div>
+          <div class="counter-box">
+            <span class="counter-number" id="count-minutes">00</span>
+            <span class="counter-unit">Minutes</span>
+          </div>
+          <div class="counter-separator">:</div>
+          <div class="counter-box">
+            <span class="counter-number" id="count-seconds">00</span>
+            <span class="counter-unit">Seconds</span>
+          </div>
+        </div>
+        <p class="counter-subtext" id="counter-date-caption">Together since the happiest day of my life</p>
+      </div>
+
+      <!-- Quick Nav Buttons -->
+      <div class="hero-actions">
+        <a href="#letter-section" class="primary-btn glow-btn">
+          <span>💌 Open Love Letter</span>
+        </a>
+        <a href="#timeline-section" class="secondary-btn glass-btn">
+          <span>✨ Our Love Story</span>
+        </a>
+        <a href="#reasons-section" class="secondary-btn glass-btn">
+          <span>💖 Reasons I Love You</span>
+        </a>
+        <a href="#coupons-section" class="secondary-btn glass-btn">
+          <span>🎟️ Love Coupons</span>
+        </a>
+      </div>
+
+      <div class="scroll-hint">
+        <span class="scroll-arrow">↓</span>
+        <span>Scroll down into our world</span>
+      </div>
+    </section>
+
+    <!-- Interactive 3D Love Letter Envelope Section -->
+    <section class="section" id="letter-section">
+      <div class="section-header">
+        <span class="section-tag">Directly From My Heart</span>
+        <h2 class="section-title">A Letter Written For You</h2>
+        <p class="section-description">Click the golden wax seal to unseal this letter.</p>
+      </div>
+
+      <div class="envelope-wrapper">
+        <div class="envelope-scene" id="envelope-scene">
+          <div class="envelope" id="envelope">
+            <div class="envelope-back"></div>
+            
+            <!-- The Folded Parchment Letter that slides out -->
+            <div class="parchment-letter" id="parchment-letter">
+              <div class="letter-inner">
+                <div class="letter-stamp">❤️ Official Love Note</div>
+                <h3 class="letter-greeting" id="letter-greeting">Dearest One,</h3>
+                <div class="letter-body" id="letter-body-text">
+                  <p>
+                    I wanted to build something as unique and radiant as the feeling you give me every day. Thank you for being my favorite person, my safest shelter, and my happiest thought.
+                  </p>
+                  <p>
+                    From our silly inside jokes to the quiet moments where we don't even need words, every single heartbeat with you is a gift I never take for granted.
+                  </p>
+                  <p>
+                    No matter where life takes us or what the stars have written, my heart belongs to you today, tomorrow, and forever.
+                  </p>
+                </div>
+                <div class="letter-sign-off">
+                  <span>Forever & always yours,</span>
+                  <strong class="letter-signature" id="letter-signature">Your Favorite Person ❤️</strong>
+                </div>
+                <button class="small-text-btn" id="edit-letter-inline-btn" title="Customize this message">
+                  ✏️ Edit this letter
+                </button>
+              </div>
+            </div>
+
+            <div class="envelope-flaps">
+              <div class="flap left-flap"></div>
+              <div class="flap right-flap"></div>
+              <div class="flap bottom-flap"></div>
+              <div class="flap top-flap" id="top-flap"></div>
+            </div>
+
+            <!-- Glowing Wax Seal Button -->
+            <button class="wax-seal" id="wax-seal" aria-label="Break seal and read letter">
+              <div class="wax-seal-inner">
+                <span class="seal-icon">❤️</span>
+                <span class="seal-text">TAP ME</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <div class="envelope-controls" id="envelope-controls" style="display: none;">
+          <button class="glass-btn" id="close-letter-btn">
+            <span>✉️ Fold Letter Back</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Love Story Milestones Section -->
+    <section class="section" id="timeline-section">
+      <div class="section-header">
+        <span class="section-tag">Our Chapters</span>
+        <h2 class="section-title">The Moments That Defined Us</h2>
+        <p class="section-description">A journey made of smiles, butterflies, and unforgettable memories.</p>
+      </div>
+
+      <div class="timeline-container">
+        <div class="timeline-line"></div>
+
+        <!-- Milestone 1 -->
+        <div class="timeline-item left">
+          <div class="timeline-node">
+            <span class="node-icon">✨</span>
+          </div>
+          <div class="timeline-card glass-card">
+            <div class="card-chip">Chapter 1</div>
+            <h3 class="card-title">The Day Our Paths Crossed</h3>
+            <span class="card-date">Where everything began</span>
+            <p class="card-text">
+              Out of all the people in the world, the universe brought you into my life. I didn't know it back then, but that was the day my favorite story began.
+            </p>
+            <div class="card-quote">"Some people search their whole lives to find what I saw in you that day."</div>
+          </div>
+        </div>
+
+        <!-- Milestone 2 -->
+        <div class="timeline-item right">
+          <div class="timeline-node">
+            <span class="node-icon">☕</span>
+          </div>
+          <div class="timeline-card glass-card">
+            <div class="card-chip">Chapter 2</div>
+            <h3 class="card-title">Our First Date & Electric Laughs</h3>
+            <span class="card-date">Butterflies & pure magic</span>
+            <p class="card-text">
+              Hours felt like minutes. Between the nervous smiles and endless conversations, I found myself never wanting that evening to end.
+            </p>
+            <div class="card-quote">"I knew from that very first smile that I was in deep trouble."</div>
+          </div>
+        </div>
+
+        <!-- Milestone 3 -->
+        <div class="timeline-item left">
+          <div class="timeline-node">
+            <span class="node-icon">💖</span>
+          </div>
+          <div class="timeline-card glass-card">
+            <div class="card-chip">Chapter 3</div>
+            <h3 class="card-title">The Moment I Knew You Were The One</h3>
+            <span class="card-date">Unspoken clarity</span>
+            <p class="card-text">
+              It wasn't just grand gestures—it was your warmth, the way your eyes light up when you're excited, and the feeling of complete peace whenever you are near.
+            </p>
+            <div class="card-quote">"Home isn't a place anymore; it's you."</div>
+          </div>
+        </div>
+
+        <!-- Milestone 4 -->
+        <div class="timeline-item right">
+          <div class="timeline-node">
+            <span class="node-icon">🌙</span>
+          </div>
+          <div class="timeline-card glass-card">
+            <div class="card-chip">Chapter 4</div>
+            <h3 class="card-title">Midnight Drives & Late-Night Talks</h3>
+            <span class="card-date">Our secret universe</span>
+            <p class="card-text">
+              Talking about our wildest dreams, sharing secrets we've never told anyone else, and laughing until our stomachs ached under the night sky.
+            </p>
+            <div class="card-quote">"With you, even silence is sweet."</div>
+          </div>
+        </div>
+
+        <!-- Milestone 5 -->
+        <div class="timeline-item left">
+          <div class="timeline-node">
+            <span class="node-icon">🚀</span>
+          </div>
+          <div class="timeline-card glass-card">
+            <div class="card-chip">Chapter 5</div>
+            <h3 class="card-title">To Infinity & All Our Next Chapters</h3>
+            <span class="card-date">Forever & always</span>
+            <p class="card-text">
+              Every day with you is a fresh adventure. Here's to all the future trips, cozy mornings, and endless memories we have yet to make.
+            </p>
+            <div class="card-quote">"The best is yet to come, and I want it all with you."</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reasons Why I Love You Interactive Deck -->
+    <section class="section" id="reasons-section">
+      <div class="section-header">
+        <span class="section-tag">A Thousand Little Things</span>
+        <h2 class="section-title">Infinite Reasons Why I Adore You</h2>
+        <p class="section-description">Click the deck to reveal another sweet truth about how amazing you are.</p>
+      </div>
+
+      <div class="reasons-deck-wrapper">
+        <div class="reason-card-display" id="reason-card">
+          <div class="card-badge" id="reason-badge">Reason #1 of ∞</div>
+          <div class="reason-heart-icon">💖</div>
+          <p class="reason-text" id="reason-text">
+            "The way your entire face lights up whenever you laugh from your soul."
+          </p>
+          <div class="reason-footer">
+            <span class="reason-sparkle">✨</span>
+            <span class="reason-hint">Click the button below to draw another reason</span>
+            <span class="reason-sparkle">✨</span>
+          </div>
+        </div>
+
+        <div class="reasons-actions">
+          <button id="next-reason-btn" class="primary-btn glow-btn">
+            <span>✨ Draw Another Reason</span>
+          </button>
+          <button id="add-reason-btn" class="secondary-btn glass-btn">
+            <span>➕ Add Your Own Reason</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Romantic Redeemable Love Coupons -->
+    <section class="section" id="coupons-section">
+      <div class="section-header">
+        <span class="section-tag">VIP Perks</span>
+        <h2 class="section-title">Exclusive Love Coupons</h2>
+        <p class="section-description">Special passes just for you! Click any coupon to redeem it on demand.</p>
+      </div>
+
+      <div class="coupons-grid" id="coupons-grid">
+        <!-- Coupon 1 -->
+        <div class="coupon-card glass-card" data-coupon-id="1">
+          <div class="coupon-cutout top"></div>
+          <div class="coupon-cutout bottom"></div>
+          <div class="coupon-header">
+            <span class="coupon-emoji">🍦</span>
+            <span class="coupon-tag">Sweet Craving</span>
+          </div>
+          <h3 class="coupon-title">Late Night Ice Cream & Long Drive</h3>
+          <p class="coupon-desc">Valid anytime, anywhere. Your favorite flavor on me, with music and windows rolled down.</p>
+          <div class="coupon-footer">
+            <button class="coupon-btn redeem-btn">Redeem Now</button>
+          </div>
+        </div>
+
+        <!-- Coupon 2 -->
+        <div class="coupon-card glass-card" data-coupon-id="2">
+          <div class="coupon-cutout top"></div>
+          <div class="coupon-cutout bottom"></div>
+          <div class="coupon-header">
+            <span class="coupon-emoji">💆‍♀️</span>
+            <span class="coupon-tag">Pampering</span>
+          </div>
+          <h3 class="coupon-title">Full Relaxing Massage & Hugs</h3>
+          <p class="coupon-desc">30 minutes of head, neck, or foot massage plus endless cuddles. Zero complaints allowed.</p>
+          <div class="coupon-footer">
+            <button class="coupon-btn redeem-btn">Redeem Now</button>
+          </div>
+        </div>
+
+        <!-- Coupon 3 -->
+        <div class="coupon-card glass-card" data-coupon-id="3">
+          <div class="coupon-cutout top"></div>
+          <div class="coupon-cutout bottom"></div>
+          <div class="coupon-header">
+            <span class="coupon-emoji">🎬</span>
+            <span class="coupon-tag">Entertainment</span>
+          </div>
+          <h3 class="coupon-title">Movie Night Complete Veto Power</h3>
+          <p class="coupon-desc">You pick whatever movie or show you want, and I promise to watch it with snacks and no phones.</p>
+          <div class="coupon-footer">
+            <button class="coupon-btn redeem-btn">Redeem Now</button>
+          </div>
+        </div>
+
+        <!-- Coupon 4 -->
+        <div class="coupon-card glass-card" data-coupon-id="4">
+          <div class="coupon-cutout top"></div>
+          <div class="coupon-cutout bottom"></div>
+          <div class="coupon-header">
+            <span class="coupon-emoji">🍝</span>
+            <span class="coupon-tag">Chef Service</span>
+          </div>
+          <h3 class="coupon-title">Homemade Dinner Cooked By Me</h3>
+          <p class="coupon-desc">A special meal made with love, your favorite dishes, candlelight, and clean dishes afterwards.</p>
+          <div class="coupon-footer">
+            <button class="coupon-btn redeem-btn">Redeem Now</button>
+          </div>
+        </div>
+
+        <!-- Coupon 5 -->
+        <div class="coupon-card glass-card" data-coupon-id="5">
+          <div class="coupon-cutout top"></div>
+          <div class="coupon-cutout bottom"></div>
+          <div class="coupon-header">
+            <span class="coupon-emoji">👑</span>
+            <span class="coupon-tag">Royalty Status</span>
+          </div>
+          <h3 class="coupon-title">Queen For A Day Pass</h3>
+          <p class="coupon-desc">Zero chores, zero cooking, and you get to call all the shots for an entire 24 hours.</p>
+          <div class="coupon-footer">
+            <button class="coupon-btn redeem-btn">Redeem Now</button>
+          </div>
+        </div>
+
+        <!-- Coupon 6 -->
+        <div class="coupon-card glass-card" data-coupon-id="6">
+          <div class="coupon-cutout top"></div>
+          <div class="coupon-cutout bottom"></div>
+          <div class="coupon-header">
+            <span class="coupon-emoji">🏆</span>
+            <span class="coupon-tag">Wildcard</span>
+          </div>
+          <h3 class="coupon-title">Automatic Win in Any Argument</h3>
+          <p class="coupon-desc">Instant concession! Pull this card and I will immediately agree that you are 100% right.</p>
+          <div class="coupon-footer">
+            <button class="coupon-btn redeem-btn">Redeem Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Starlight Constellation Canvas -->
+    <section class="section" id="starlight-section">
+      <div class="section-header">
+        <span class="section-tag">Interactive Stardust</span>
+        <h2 class="section-title">Draw Our Constellation</h2>
+        <p class="section-description">Click or tap anywhere in the star field to create glowing stars and connect them into constellations.</p>
+      </div>
+
+      <div class="constellation-box glass-card">
+        <canvas id="interactive-star-canvas"></canvas>
+        <div class="constellation-overlay">
+          <button id="clear-stars-btn" class="glass-btn small-btn">✨ Clear Sky</button>
+          <button id="heart-constellation-btn" class="primary-btn small-btn glow-btn">💖 Create Heart Constellation</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="romantic-footer">
+      <div class="footer-heart">❤️</div>
+      <p class="footer-text">
+        Crafted with every ounce of my love for <span class="footer-highlight" id="footer-her-name">You</span>.
+      </p>
+      <p class="footer-subtext">Always & Forever • No Expiration Date</p>
+    </footer>
+
+  </main>
+
+  <!-- Personalization Settings Modal -->
+  <div class="modal-backdrop" id="settings-modal" style="display: none;">
+    <div class="modal-card glass-card">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>⚙️</span>
+          <h3>Personalize This Website</h3>
+        </div>
+        <button id="close-settings-btn" class="close-btn" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <p class="modal-desc">
+          Customize this website with your names, anniversary date, and special letter. All settings are saved automatically in your browser!
+        </p>
+
+        <form id="settings-form">
+          <div class="form-group">
+            <label for="input-her-name">Her Name / Nickname</label>
+            <input type="text" id="input-her-name" placeholder="e.g. My Princess, Sophia" required>
+          </div>
+
+          <div class="form-group">
+            <label for="input-your-name">Your Name / Sign-off</label>
+            <input type="text" id="input-your-name" placeholder="e.g. Alex, Yours Always">
+          </div>
+
+          <div class="form-group">
+            <label for="input-start-date">Anniversary / Dating Start Date</label>
+            <input type="date" id="input-start-date">
+            <small class="form-hint">Used for the live "Together for..." counter</small>
+          </div>
+
+          <div class="form-group">
+            <label for="input-letter-text">Custom Love Letter Message</label>
+            <textarea id="input-letter-text" rows="5" placeholder="Write your heartfelt letter here..."></textarea>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" id="reset-defaults-btn" class="secondary-btn glass-btn">Reset Defaults</button>
+            <button type="submit" class="primary-btn glow-btn">Save Changes 💖</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Custom Reason Modal -->
+  <div class="modal-backdrop" id="add-reason-modal" style="display: none;">
+    <div class="modal-card glass-card">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>💖</span>
+          <h3>Add A Custom Reason</h3>
+        </div>
+        <button id="close-reason-modal-btn" class="close-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="add-reason-form">
+          <div class="form-group">
+            <label for="input-new-reason">Why do you love her?</label>
+            <textarea id="input-new-reason" rows="3" placeholder="e.g. The way you sing your favorite song off-key..." required></textarea>
+          </div>
+          <div class="modal-actions">
+            <button type="submit" class="primary-btn glow-btn">Add To Card Deck ✨</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
