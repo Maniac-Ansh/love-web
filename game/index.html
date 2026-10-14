@@ -470,6 +470,13 @@
             <div class="ground-line"></div>
             <div class="ground-sparkles">✨ &nbsp; 🌸 &nbsp; ✨ &nbsp; 🌸 &nbsp; ✨</div>
           </div>
+
+          <!-- Unzip Bag & Continue Button for Door 3 -->
+          <div class="door3-bag-btn-wrap" style="margin-top: 18px; z-index: 25; text-align: center;">
+            <button class="arcade-btn yes-btn" id="btn-unzip-bag-d3" style="animation: pulseBeat 1.8s infinite;">
+              <span>🎒 CLICK TO UNZIP MEMORIES 💖</span>
+            </button>
+          </div>
         </div>
 
         <!-- Fullscreen Sea of Hearts Overlay (Erupts from bag to cover screen) -->
@@ -499,9 +506,9 @@
             <span>Always & Forever Yours 💖</span>
           </div>
 
-          <div class="victory-actions">
+          <div class="victory-actions" id="door3-victory-actions">
             <button class="arcade-btn next-level-btn" id="btn-start-door-4">
-              <span>CONTINUE TO DOOR 4 🗝️</span>
+              <span>ENTER DOOR 4: THE ENCHANTED MUSIC BOX 🗝️🎵</span>
             </button>
           </div>
         </div>
@@ -509,17 +516,1083 @@
       </div>
     </section>
 
-    <!-- LEVEL 4 PLACEHOLDER -->
-    <section class="stage-screen" id="level-4" style="display: none;">
+    <!-- DOOR 4: THE ENCHANTED MUSIC BOX (VINTAGE BOX, AUDIO, FLYING NOTES) -->
+    <section class="stage-screen" id="screen-door-4" style="display: none;">
       <div class="screen-content">
-        <div class="coming-soon-box">
-          <span class="cs-icon">🗝️</span>
-          <h2>CHAPTER 4: COMING SOON</h2>
-          <p>Ready to build our next romantic chapter!</p>
-          <button class="arcade-btn secondary" id="btn-back-to-door-3">
-            <span>← Back to Door 3</span>
-          </button>
+
+        <!-- Title Box -->
+        <div class="arcade-title-box" id="door4-title-box">
+          <span class="arcade-tag">★ DOOR 4 ★</span>
+          <h1 class="game-title">
+            DOOR 4: THE <br>
+            <span class="gradient-text">ENCHANTED MUSIC BOX</span>
+          </h1>
+          <p class="game-tagline">
+            "A secret melody kept safe just for you... 🎵✨"
+          </p>
         </div>
+
+        <!-- Dialogue Box -->
+        <div class="rpg-dialogue-box" id="door4-dialogue-box">
+          <div class="dialogue-speaker">
+            <span class="speaker-avatar">🗝️</span>
+            <span class="speaker-name">Melody Keeper</span>
+          </div>
+          <p class="dialogue-text" id="door4-dialogue-text">
+            "Before you lies our most precious keepsake... Turn the key or enter your promise code from Card 4 to open the music box!"
+          </p>
+        </div>
+
+        <!-- Card 4 Password / Quick Unlock Card -->
+        <div class="verification-card" id="door4-password-card">
+          <h2 class="verify-question">
+            Unlock the Melody with our Forever Promise...
+          </h2>
+          <p class="password-prompt-sub">
+            💡 Hint: Check your card 4 (Our forever promise 💕) or click unlock directly below!
+          </p>
+
+          <form id="door4-password-form" class="password-form-box">
+            <div class="input-lock-wrap">
+              <span class="lock-icon">🔒</span>
+              <input type="text" id="door4-password-input" placeholder="Enter promise (or click unlock)..." autocomplete="off">
+            </div>
+            <div class="d4-gate-buttons">
+              <button type="submit" class="arcade-btn yes-btn" id="btn-submit-door4-password">
+                <span>UNLOCK MUSIC BOX 🗝️</span>
+              </button>
+            </div>
+          </form>
+
+          <!-- Error banner for Door 4 -->
+          <div class="error-banner-box" id="door4-error-banner" style="display: none;">
+            <span class="err-icon">⚠️</span>
+            <p id="door4-error-text">
+              Card 4 promise does not match! Look closely at card 4, my love 💕
+            </p>
+          </div>
+        </div>
+
+        <!-- The Music Box Stage & Scene (Revealed upon unlocking) -->
+        <div class="door4-musicbox-scene" id="door4-musicbox-scene" style="display: none;">
+          
+          <!-- Sky decoration with twilight ambiance -->
+          <div class="scene-sky-decor">
+            <div class="twilight-stars">✨ 🎵 🌟 🎶 💫 🎵 ✨</div>
+            <div class="scene-floating-lanterns">🏮 💖 🏮</div>
+            <div class="twilight-moon">🌙</div>
+          </div>
+
+          <!-- Interactive Status / Hint Banner -->
+          <div class="musicbox-status-banner" id="musicbox-status-banner">
+            <span class="musicbox-status-icon" id="musicbox-status-icon">🗝️</span>
+            <span class="musicbox-status-text" id="musicbox-status-text">Click the golden music box to open it & play our song! ✨</span>
+          </div>
+
+          <!-- THE 3D VINTAGE MUSIC BOX CONTAINER -->
+          <div class="musicbox-3d-stage" id="musicbox-3d-stage">
+            
+            <!-- Pedestal / Velvet Table -->
+            <div class="musicbox-pedestal">
+              
+              <!-- Wind-up Key on Side -->
+              <div class="musicbox-windup-key-wrap" id="musicbox-windup-key-wrap" title="Turn the wind-up key!">
+                <div class="windup-stem"></div>
+                <div class="windup-key" id="windup-key">
+                  <span class="key-head">🗝️</span>
+                </div>
+              </div>
+
+              <!-- Main Music Box Object -->
+              <div class="music-box" id="music-box">
+                
+                <!-- Lid of the Music Box (Swings open backwards in 3D) -->
+                <div class="musicbox-lid" id="musicbox-lid">
+                  <div class="lid-outer">
+                    <div class="lid-engraving">
+                      <span class="engraving-crown">👑</span>
+                      <span class="engraving-text">FOR RIUU</span>
+                      <span class="engraving-heart">💖</span>
+                    </div>
+                    <div class="lid-gold-rim"></div>
+                    <div class="lid-gem">💎</div>
+                  </div>
+                  <div class="lid-inner">
+                    <div class="lid-mirror">
+                      <span class="mirror-sparkle">✨</span>
+                      <p class="mirror-inscription">"You are my favorite melody"</p>
+                      <span class="mirror-sparkle">✨</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Box Body / Interior Chamber -->
+                <div class="musicbox-body">
+                  <!-- Golden Clasp / Latch -->
+                  <div class="box-clasp" id="box-clasp">
+                    <span class="clasp-gem">💖</span>
+                  </div>
+
+                  <!-- Velvet Interior Lining -->
+                  <div class="box-interior">
+                    
+                    <!-- Spinning Carousel Figurine Centerpiece -->
+                    <div class="musicbox-figurine-wrap" id="musicbox-figurine-wrap">
+                      <div class="figurine-pedestal"></div>
+                      <div class="figurine-couple" id="figurine-couple">
+                        <div class="mini-char mini-girl">
+                          <span class="mini-crown">👑</span>
+                          <span class="mini-face">👧🏻</span>
+                          <div class="mini-dress"></div>
+                        </div>
+                        <span class="mini-sparkle-center">💖</span>
+                        <div class="mini-char mini-boy">
+                          <span class="mini-face">👦🏻</span>
+                          <div class="mini-coat"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Spinning Pin Drum / Brass Mechanism Cylinder -->
+                    <div class="brass-cylinder-mechanism" id="brass-cylinder">
+                      <div class="cylinder-drum">
+                        <span class="drum-pin pin-1"></span>
+                        <span class="drum-pin pin-2"></span>
+                        <span class="drum-pin pin-3"></span>
+                        <span class="drum-pin pin-4"></span>
+                        <span class="drum-pin pin-5"></span>
+                      </div>
+                      <div class="cylinder-comb">
+                        <div class="comb-tooth"></div>
+                        <div class="comb-tooth"></div>
+                        <div class="comb-tooth"></div>
+                        <div class="comb-tooth"></div>
+                        <div class="comb-tooth"></div>
+                      </div>
+                    </div>
+
+                    <!-- Internal Light Glow -->
+                    <div class="box-glow-lamp" id="box-glow-lamp"></div>
+
+                  </div>
+
+                  <!-- Wood & Gold Ornate Trim -->
+                  <div class="box-front-panel">
+                    <div class="panel-filigree filigree-l">❧</div>
+                    <div class="panel-nameplate">
+                      <span class="nameplate-icon">🎼</span>
+                      <span class="nameplate-title">OUR FOREVER MELODY</span>
+                      <span class="nameplate-icon">🎼</span>
+                    </div>
+                    <div class="panel-filigree filigree-r">☙</div>
+                  </div>
+
+                  <div class="box-feet">
+                    <div class="box-foot foot-l"></div>
+                    <div class="box-foot foot-r"></div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Box Shadow -->
+              <div class="box-drop-shadow"></div>
+
+            </div>
+
+          </div>
+
+          <!-- Pulsing Audio Waveform / Visualizer Bars -->
+          <div class="melody-visualizer-wrap" id="melody-visualizer-wrap" style="display: none;">
+            <div class="vis-bar bar-1"></div>
+            <div class="vis-bar bar-2"></div>
+            <div class="vis-bar bar-3"></div>
+            <div class="vis-bar bar-4"></div>
+            <div class="vis-bar bar-5"></div>
+            <div class="vis-bar bar-6"></div>
+            <div class="vis-bar bar-7"></div>
+            <div class="vis-bar bar-8"></div>
+            <div class="vis-bar bar-9"></div>
+            <div class="vis-bar bar-10"></div>
+          </div>
+
+          <!-- Time & Playback Controls Panel -->
+          <div class="musicbox-controls-card" id="musicbox-controls-card" style="display: none;">
+            
+            <!-- Song Title & Badge -->
+            <div class="song-info-header">
+              <span class="music-note-badge">🎵 NOW PLAYING</span>
+              <h3 class="song-title">Our Special Voice & Melody 💕</h3>
+              <p class="song-subtitle">Recorded with all my heart, made just for you</p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="audio-progress-wrap">
+              <span class="time-stamp" id="audio-current-time">0:00</span>
+              <div class="progress-bar-track" id="audio-progress-track">
+                <div class="progress-bar-fill" id="audio-progress-fill"></div>
+                <div class="progress-bar-thumb" id="audio-progress-thumb">💖</div>
+              </div>
+              <span class="time-stamp" id="audio-total-time">--:--</span>
+            </div>
+
+            <!-- Interactive Player Action Buttons -->
+            <div class="player-buttons-row">
+              <button class="arcade-btn secondary mini-ctrl-btn" id="btn-audio-rewind" title="Rewind 10 seconds">
+                <span>⏪ -10s</span>
+              </button>
+
+              <button class="arcade-btn play-pause-master-btn" id="btn-audio-play-pause">
+                <span class="ctrl-icon" id="play-pause-icon">⏸️</span>
+                <span id="play-pause-text">PAUSE MELODY</span>
+              </button>
+
+              <button class="arcade-btn secondary mini-ctrl-btn" id="btn-audio-forward" title="Forward 10 seconds">
+                <span>+10s ⏩</span>
+              </button>
+            </div>
+
+            <!-- Download Audio Option (Prominent & Beautiful) -->
+            <div class="download-section-box">
+              <div class="download-info">
+                <span class="download-tag">💾 SAVE OUR MEMORY</span>
+                <p class="download-sub">Download this audio file to keep on your phone or playlist forever:</p>
+              </div>
+              <a href="audio/our-melody.mp3" download="Our_Forever_Melody.mp3" class="arcade-btn download-melody-btn" id="btn-download-audio">
+                <span class="btn-icon">📥</span>
+                <span>DOWNLOAD AUDIO FILE (.MP3) 🎶</span>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Romantic Keepsake Love Letter Card -->
+          <div class="zero-feet-message-card musicbox-letter-card" id="musicbox-letter-card" style="display: none;">
+            <div class="zf-badge-wrap">
+              <span class="zf-icon">🎶</span>
+              <span class="zf-tag">THE SOUND OF MY HEART</span>
+            </div>
+
+            <h2 class="zf-main-quote">
+              "No melody in the world sounds sweeter than our love..."
+            </h2>
+
+            <div class="zf-prose-box">
+              <p class="zf-prose-text">
+                Every second of this audio carries the honest feelings, laughter, and affection I have for you. 
+                Whenever you listen to this, know that no matter where you are or what day it is, my heart is singing for you.
+              </p>
+              <p class="zf-prose-highlight">
+                "You are my favorite song on repeat, the rhythm to my heartbeat, and the melody I want to listen to for the rest of my life."
+              </p>
+            </div>
+
+            <div class="zf-signature">
+              <span>With All My Love & Every Note, Forever Yours 💖</span>
+            </div>
+
+            <div class="victory-actions">
+              <button class="arcade-btn secondary" id="btn-reopen-musicbox">
+                <span>🔄 Play From Beginning</span>
+              </button>
+              <button class="arcade-btn next-level-btn secret-room-btn" id="btn-start-door-5">
+                <span>ENTER NEXT DOOR: THE SECRET ROOM 🗝️🤫</span>
+              </button>
+              <button class="arcade-btn secondary" id="btn-back-to-door-3-from-4">
+                <span>← Back to Door 3</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Fullscreen Canvas for Flying Musical Notes & Sparkles -->
+        <canvas id="music-notes-canvas" class="music-notes-canvas" style="display: none;"></canvas>
+
+        <!-- Audio Element with direct src and fallback sources -->
+        <audio id="melody-audio" src="audio/our-melody.mp3" preload="auto" playsinline>
+          <source src="audio/our-melody.mp3" type="audio/mpeg">
+          <source src="audio/our-melody.mpeg" type="audio/mpeg">
+        </audio>
+
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- DOOR 5: THE SECRET ROOM (DARK ROMANCE & FORBIDDEN SANCTUARY) -->
+    <!-- ================================================================ -->
+    <section class="stage-screen" id="screen-door-5" style="display: none;">
+      <div class="screen-content">
+
+        <!-- Dark Romance Title Box -->
+        <div class="arcade-title-box dark-romance-title-box" id="door5-title-box">
+          <span class="arcade-tag dark-romance-tag">★ FORBIDDEN SANCTUARY ★</span>
+          <h1 class="game-title">
+            DOOR 5: THE <br>
+            <span class="dark-romance-title">SECRET ROOM</span>
+          </h1>
+          <p class="game-tagline">
+            "A dark romance sanctuary of our deepest desires, raw confessions & whispered truths... 🍷🕯️🥀"
+          </p>
+        </div>
+
+        <!-- Dialogue Box -->
+        <div class="rpg-dialogue-box dark-romance-dialogue" id="door5-dialogue-box">
+          <div class="dialogue-speaker">
+            <span class="speaker-avatar">🗝️</span>
+            <span class="speaker-name">Dark Romance Keeper</span>
+          </div>
+          <p class="dialogue-text" id="door5-dialogue-text">
+            "Welcome into our forbidden sanctuary... Every secret here is kept safe for your eyes only, and every picture is sealed in ruby-gold foil for your touch alone."
+          </p>
+        </div>
+
+        <!-- Secret Room Main Chamber -->
+        <div class="secret-room-chamber" id="secret-room-chamber">
+          
+          <!-- Mystic Dark Romance Ambience Decor -->
+          <div class="secret-room-decor">
+            <div class="secret-fairy-lights">🕯️ 🥀 🍷 🕯️ 🌹 🕯️ 🥀</div>
+            <div class="secret-room-badge">
+              <span class="badge-icon">🔐</span>
+              <span>RESTRICTED SANCTUARY • FOR RIUU & HER BOY ONLY 🍷</span>
+            </div>
+          </div>
+
+          <!-- ============================================================ -->
+          <!-- 1. INTERACTIVE SCRATCH CARD: WHO IS IN MY HEART 24/7? -->
+          <!-- ============================================================ -->
+          <div class="secret-feature-section scratch-section">
+            <div class="section-tag-wrap">
+              <span class="section-badge-icon">🪙</span>
+              <span class="section-badge-title">INTERACTIVE SCRATCH CARD</span>
+            </div>
+            
+            <h2 class="scratch-main-title">Who is in my heart 24/7? 💕</h2>
+            <p class="scratch-sub-desc">Scratch off the golden foil below with your finger or mouse to reveal:</p>
+
+            <div class="scratch-card-wrapper" id="scratch-card-wrapper">
+              <!-- Revealed Layer Beneath -->
+              <div class="scratch-reveal-layer" id="scratch-reveal-layer">
+                <img src="images/in-my-heart.jpeg" alt="In My Heart 24/7" class="scratch-photo" id="scratch-photo">
+                <div class="scratch-photo-caption">
+                  <span class="heart-pulse-icon">💖</span>
+                  <strong>It's You, Riuu. Always & Forever.</strong>
+                  <p>Every single beat, every passing second, my heart belongs to you 24/7.</p>
+                </div>
+              </div>
+
+              <!-- Scratchable Canvas Overlay -->
+              <canvas id="scratch-canvas" class="scratch-canvas" width="340" height="420"></canvas>
+            </div>
+
+            <!-- Scratch Action Buttons -->
+            <div class="scratch-actions-row">
+              <button class="arcade-btn yes-btn mini-btn" id="btn-reveal-scratch">
+                <span>✨ Scratch Off All / Reveal ✨</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ============================================================ -->
+          <!-- 2. PHOTO & MEMORY POLAROID GALLERY (ITEMS 2, 3, 4, 5) -->
+          <!-- ============================================================ -->
+          <div class="secret-feature-section gallery-section">
+            <div class="section-tag-wrap">
+              <span class="section-badge-icon">🪙</span>
+              <span class="section-badge-title">GOLDEN SCRATCH MEMORIES</span>
+            </div>
+            <h2 class="gallery-main-title">Moments That Steal My Breath</h2>
+            <p class="scratch-sub-desc">Every picture is sealed under golden foil. Rub to scratch and unveil each memory:</p>
+
+            <div class="gallery-actions-header" style="margin-bottom: 22px;">
+              <button class="arcade-btn yes-btn mini-btn" id="btn-reveal-all-cards" style="animation: pulseBeat 2s infinite;">
+                <span>✨ Scratch Off All Pictures (Reveal All) 🪙</span>
+              </button>
+            </div>
+
+            <div class="secret-gallery-grid">
+              
+              <!-- Card 2: Cutest person in my life -->
+              <div class="secret-photo-card" id="secret-card-wrap-2">
+                <div class="photo-frame-wrap">
+                  <img src="images/cutest-person.jpeg" alt="Cutest person in my life" class="polaroid-img">
+                  <div class="photo-overlay-sparkle">✨</div>
+                  <!-- Golden Scratch Canvas Overlay -->
+                  <canvas id="scratch-canvas-2" class="scratch-canvas polaroid-scratch-canvas" width="320" height="280"></canvas>
+                </div>
+                <div class="photo-card-info">
+                  <span class="card-pill-tag">👑 THE CUTEST</span>
+                  <h3 class="photo-card-heading">Cutest Person In My Life</h3>
+                  <p class="photo-card-text">
+                    "The prettiest face, the sweetest eyes, and the most adorable smile that instantly brightens my whole world."
+                  </p>
+                  <div class="card-scratch-btn-wrap">
+                    <button class="arcade-btn yes-btn mini-btn btn-reveal-card" id="btn-reveal-card-2" data-card="2">
+                      <span>✨ Scratch / Reveal ✨</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3: Always want to hold you -->
+              <div class="secret-photo-card" id="secret-card-wrap-3">
+                <div class="photo-frame-wrap">
+                  <img src="images/always-hold-you.jpeg" alt="Always want to hold you" class="polaroid-img">
+                  <div class="photo-overlay-sparkle">💖</div>
+                  <!-- Golden Scratch Canvas Overlay -->
+                  <canvas id="scratch-canvas-3" class="scratch-canvas polaroid-scratch-canvas" width="320" height="280"></canvas>
+                </div>
+                <div class="photo-card-info">
+                  <span class="card-pill-tag">🤗 WARM EMBRACE</span>
+                  <h3 class="photo-card-heading">Always Want To Hold You</h3>
+                  <p class="photo-card-text">
+                    "Whenever my arms wrap around you, everything in the universe feels right. I never want to let you go."
+                  </p>
+                  <div class="card-scratch-btn-wrap">
+                    <button class="arcade-btn yes-btn mini-btn btn-reveal-card" id="btn-reveal-card-3" data-card="3">
+                      <span>✨ Scratch / Reveal ✨</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 4: My safest place... -->
+              <div class="secret-photo-card" id="secret-card-wrap-4">
+                <div class="photo-frame-wrap">
+                  <img src="images/my-safest-place.jpeg" alt="My safest place..." class="polaroid-img">
+                  <div class="photo-overlay-sparkle">🌸</div>
+                  <!-- Golden Scratch Canvas Overlay -->
+                  <canvas id="scratch-canvas-4" class="scratch-canvas polaroid-scratch-canvas" width="320" height="280"></canvas>
+                </div>
+                <div class="photo-card-info">
+                  <span class="card-pill-tag">🏡 MY SANCTUARY</span>
+                  <h3 class="photo-card-heading">My Safest Place...</h3>
+                  <p class="photo-card-text">
+                    "In your arms, in your presence, in your voice—that's where all my worries disappear into peace."
+                  </p>
+                  <div class="card-scratch-btn-wrap">
+                    <button class="arcade-btn yes-btn mini-btn btn-reveal-card" id="btn-reveal-card-4" data-card="4">
+                      <span>✨ Scratch / Reveal ✨</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 5: My Dream Date -->
+              <div class="secret-photo-card dream-date-card" id="secret-card-wrap-5">
+                <div class="dream-date-illustration" style="position: relative;">
+                  <div class="date-icons-row">🍝 🕯️ 🍷 💖 👩‍🍳</div>
+                  <div class="dream-date-glow"></div>
+                  <!-- Golden Scratch Canvas Overlay -->
+                  <canvas id="scratch-canvas-5" class="scratch-canvas polaroid-scratch-canvas" width="320" height="160"></canvas>
+                </div>
+                <div class="photo-card-info">
+                  <span class="card-pill-tag gold-pill">🕯️ OUR DREAM DATE</span>
+                  <h3 class="photo-card-heading">My Dream Date</h3>
+                  <p class="photo-card-text highlight-dream-text">
+                    "I just want to have a dinner party with you, cooking together and having lots of hugs and kisses and cuddles."
+                  </p>
+                  <p class="photo-card-sub">
+                    Just the two of us dancing in the kitchen, tasting food together, and laughing in each other's arms.
+                  </p>
+                  <div class="card-scratch-btn-wrap">
+                    <button class="arcade-btn yes-btn mini-btn btn-reveal-card" id="btn-reveal-card-5" data-card="5">
+                      <span>✨ Scratch / Reveal ✨</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ============================================================ -->
+          <!-- 3. TOP 3 DEEPEST SECRETS (PASSWORD PROTECTED) -->
+          <!-- ============================================================ -->
+          <div class="secret-feature-section secrets-lockbox-section" id="secrets-lockbox-section">
+            <div class="section-tag-wrap">
+              <span class="section-badge-icon">🔐</span>
+              <span class="section-badge-title">CLASSIFIED CONFESSIONS</span>
+            </div>
+            
+            <h2 class="secrets-vault-title">Top 3 Deepest Secrets</h2>
+            <p class="secrets-vault-desc">These are the most honest, raw, and deepest desires of my heart. Enter our secret password to unlock:</p>
+
+            <!-- Password Form for Secrets -->
+            <div class="secrets-password-box" id="secrets-password-box">
+              <div class="lock-graphic">🔒</div>
+              <form id="secrets-password-form" class="secrets-form">
+                <div class="input-lock-wrap">
+                  <span class="lock-icon">🗝️</span>
+                  <input type="text" id="secrets-password-input" placeholder="Enter secret passcode..." autocomplete="off" required>
+                </div>
+                <button type="submit" class="arcade-btn yes-btn" id="btn-submit-secrets-pass">
+                  <span>UNLOCK TOP 3 SECRETS 🔓</span>
+                </button>
+              </form>
+              <p class="password-hint-text">🔒 Locked Vault • Ask him for the secret key 💕</p>
+
+              <!-- Error Banner -->
+              <div class="error-banner-box" id="secrets-error-banner" style="display: none;">
+                <span class="err-icon">⚠️</span>
+                <p id="secrets-error-text">Incorrect passcode! Ask him for the secret key, my love 💕</p>
+              </div>
+            </div>
+
+            <!-- UNLOCKED SECRETS CONTENT (Hidden until password entered) -->
+            <div class="unlocked-secrets-container" id="unlocked-secrets-container" style="display: none;">
+              
+              <div class="unlocked-badge">
+                <span>🔓 SECRETS UNLOCKED FOR RIUU'S EYES ONLY</span>
+              </div>
+
+              <!-- Secret 1 -->
+              <div class="secret-confession-card secret-card-1">
+                <div class="confession-header">
+                  <span class="confession-number">SECRET #1</span>
+                  <span class="confession-emoji">💋</span>
+                </div>
+                <div class="confession-body">
+                  <p class="confession-quote">
+                    "Aaaa Riuu, you are just so unbelievably cute... Someday, I just want to gently cup your soft cheek, slowly tuck your hair behind your ear, pull you breathlessly close into my arms, and kiss your lips so tenderly and for so long that the whole world completely fades away around us..... 💋✨"
+                  </p>
+                </div>
+                <div class="confession-footer">
+                  <span>— Can't wait for the day this dream comes true 💕</span>
+                </div>
+              </div>
+
+              <!-- Secret 2 -->
+              <div class="secret-confession-card secret-card-2">
+                <div class="confession-header">
+                  <span class="confession-number">SECRET #2</span>
+                  <span class="confession-emoji">🍫</span>
+                </div>
+                <div class="confession-body">
+                  <p class="confession-quote">
+                    "Sach bataun toh itna innocent bhi nahi hoon main, bas thoda darr lagta hai itna open hone mein... but you are honestly so breathtakingly beautiful yaarrrr... Someday, I just want to eat you up, applying chocolate syrup and just eat you, bas! 🙈🍫😋"
+                  </p>
+                </div>
+                <div class="confession-footer">
+                  <span>— You are just so beautiful and irresistible, bas! 💕😋</span>
+                </div>
+              </div>
+
+              <!-- Secret 3 -->
+              <div class="secret-confession-card secret-card-3">
+                <div class="confession-header">
+                  <span class="confession-number">SECRET #3</span>
+                  <span class="confession-emoji">🥺</span>
+                </div>
+                <div class="confession-body">
+                  <p class="confession-quote">
+                    "I just pray she always treats me like her baby—gently patting my head, holding me tight in her embrace, and never letting go. Whenever I'm low, sad, or overthinking, she is the only soul I want to talk to. I melt completely every time she pampers and babies me, healing everything with our silly, clingy, flirty texts and late-night calls. You are my forever comfort and safest sanctuary... 🥺💖"
+                  </p>
+                </div>
+                <div class="confession-footer">
+                  <span>— You are my ultimate safe space, my peace, forever 💖</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Secret Room Forever Promise Card -->
+          <div class="secret-forever-banner">
+            <span class="sf-icon">♾️</span>
+            <p class="sf-text">
+              "In every lifetime, in every parallel universe, through every door and secret chamber... my heart will always choose you, Riuu."
+            </p>
+            <span class="sf-sig">Forever & Always, Your Person 💖</span>
+          </div>
+
+          <!-- Actions Row -->
+          <div class="secret-room-actions">
+            <button class="arcade-btn secondary" id="btn-back-to-door-4">
+              <span>← Back to Door 4 (Music Box) 🎵</span>
+            </button>
+            <button class="arcade-btn yes-btn" id="btn-go-to-door-6">
+              <span>Step Out of the Heart (Door 6) 🕊️✨ →</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- DOOR 6: OUT OF THE HEART (THE SANCTUARY & MYSTERY CHAMBER)        -->
+    <!-- ================================================================= -->
+    <section class="game-screen screen-door-6" id="screen-door-6" style="display: none;">
+      <div class="arcade-cabinet door6-cabinet">
+        
+        <!-- Header / Door Badge -->
+        <div class="arcade-title-box door6-title-box" id="door6-title-box">
+          <div class="level-badge-pill door6-badge">
+            <span class="badge-star">✨</span>
+            <span class="badge-text">DOOR 6: OUT OF THE HEART</span>
+            <span class="badge-star">🕊️</span>
+          </div>
+          <h1 class="door6-title">Stepping Out of My Heart... 🗝️💖</h1>
+          <p class="door6-subtitle">You have walked through the deepest corridors of my soul.</p>
+        </div>
+
+        <!-- RPG Dialogue Box -->
+        <div class="rpg-dialogue-box door6-dialogue" id="door6-dialogue-box">
+          <div class="speaker-tag">
+            <span class="speaker-icon">🕊️</span>
+            <span class="speaker-name">ANSH'S HEART</span>
+          </div>
+          <p class="dialogue-text" id="door6-dialogue-text">
+            "Before you step back into the world, my love... pause here for a moment. There is a sacred promise to keep, and one final tomorrow surprise waiting for you..."
+          </p>
+        </div>
+
+        <!-- Door 6 Sanctuary Container -->
+        <div class="door6-content-container">
+
+          <!-- 1. THANK YOU FOR VISITING & KEEP THIS A SECRET MESSAGE -->
+          <div class="door6-card thank-you-card" id="door6-thankyou-card">
+            <div class="card-glow-edge"></div>
+            <div class="ty-seal-icon">💌</div>
+            <div class="ty-header">
+              <span class="ty-tag">OUR SACRED SAFE SPACE</span>
+              <h2 class="ty-title">Thank You For Stepping Inside My Heart</h2>
+            </div>
+            
+            <div class="ty-body">
+              <p class="ty-paragraph">
+                Thank you for opening every door, scratching every memory, listening to the music box, and unlocking the most honest confessions I could ever share. Knowing that you explored every secret corner of my heart fills me with so much warmth and love.
+              </p>
+              
+              <div class="secret-pledge-box">
+                <div class="pledge-lock-icon">🤫🔐</div>
+                <div class="pledge-content">
+                  <h3 class="pledge-heading">Our Little Secret...</h3>
+                  <p class="pledge-text">
+                    "Every secret, every confession, every desire, and every tender thought you read in here is strictly between you and me. Keep this safe inside your heart, my sweet Riuu. Nobody else in the world gets to see this side of me—only you."
+                  </p>
+                </div>
+              </div>
+
+              <div class="ty-signature-row">
+                <span class="ty-sig-tag">Yours completely & forever,</span>
+                <span class="ty-sig-name">Ansh 💖</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================================ -->
+          <!-- 2. THE GOLDEN ONE-TIME WISH TICKET (WHATEVER SHE ASKS FOR)   -->
+          <!-- ============================================================ -->
+          <div class="door6-card wish-ticket-card" id="door6-ticket-card">
+            <div class="card-glow-edge"></div>
+            
+            <div class="ticket-header-badge">
+              <span class="th-badge-icon">🎟️</span>
+              <span class="th-badge-title">OFFICIAL ROYAL GIFT</span>
+            </div>
+
+            <h2 class="ticket-card-title">One-Day Sweet Wish Pass 🎟️✨</h2>
+            <p class="ticket-card-desc">
+              Before the final mystery box, here is your special golden pass. Valid for Friday, 16 Oct only:
+            </p>
+
+            <!-- Vintage Holographic Golden Ticket UI -->
+            <div class="golden-ticket-wrapper">
+              <div class="golden-ticket" id="golden-wish-ticket">
+                <div class="ticket-hologram-overlay"></div>
+                <div class="ticket-notch notch-left"></div>
+                <div class="ticket-notch notch-right"></div>
+                
+                <div class="ticket-inner">
+                  <div class="ticket-top-row">
+                    <span class="ticket-series">DATE: FRIDAY, 16 OCT 2026</span>
+                    <span class="ticket-pass-type">⭐ ONE-DAY SWEET WISH PASS ⭐</span>
+                    <span class="ticket-code">#ANSH-RIUU-16OCT</span>
+                  </div>
+
+                  <div class="ticket-main-content">
+                    <div class="ticket-seal-graphic">👑</div>
+                    <div class="ticket-titles">
+                      <h3 class="ticket-big-title">THE SWEET WISH PASS</h3>
+                      <p class="ticket-clause">
+                        "Valid for ONE sweet request, treat, or wish of your choice on this day. Ansh will happily fulfill it for you with lots of love! 💕"
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="ticket-details-grid">
+                    <div class="td-item">
+                      <span class="td-label">ISSUED TO:</span>
+                      <span class="td-val">Riuu (My Queen 💖)</span>
+                    </div>
+                    <div class="td-item">
+                      <span class="td-label">EXECUTOR:</span>
+                      <span class="td-val">Ansh 🔒</span>
+                    </div>
+                    <div class="td-item">
+                      <span class="td-label">VALIDITY:</span>
+                      <span class="td-val">Friday, 16 Oct Only ⏳</span>
+                    </div>
+                    <div class="td-item">
+                      <span class="td-label">STATUS:</span>
+                      <span class="td-val status-active" id="ticket-status-label">VALID TODAY (16 OCT) 🟢</span>
+                    </div>
+                  </div>
+
+                  <div class="ticket-barcode-row">
+                    <div class="ticket-barcode">||| | |||| | |||||| | |||| || | |||| ||||| | ||</div>
+                    <span class="ticket-barcode-num">16-10-2026-RIUU-ANSH-SPECIAL</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ticket Claim / Wish Box Interactive Area -->
+            <div class="ticket-action-box">
+              <p class="ticket-instruction">
+                💡 Valid for Friday, 16 Oct only! Type your sweet wish below:
+              </p>
+              <div class="ticket-input-row" id="ticket-input-container">
+                <input type="text" id="wish-ticket-input" placeholder="Type your sweet wish for Friday, 16 Oct..." autocomplete="off">
+                <button type="button" class="arcade-btn yes-btn" id="btn-redeem-ticket">
+                  <span>SEAL MY WISH (16 OCT) 🎟️💖</span>
+                </button>
+              </div>
+              <div class="wish-redeemed-banner" id="wish-redeemed-banner" style="display: none;">
+                <span class="w-icon">🎉👑</span>
+                <div class="w-info">
+                  <h4>WISH OFFICIALLY RECORDED & SEALED FOR 16 OCT!</h4>
+                  <p id="redeemed-wish-display">"Your wish is Ansh's absolute command."</p>
+                  <span class="w-sub">Ansh will happily fulfill this for you with all his love! 💖</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ============================================================ -->
+          <!-- 3. THE 9 MYSTERY GIFT BOXES MINI-GAME (SELECT 3)              -->
+          <!-- ============================================================ -->
+          <div class="door6-card pick3-game-card" id="door6-pick3-card">
+            <div class="card-glow-edge"></div>
+            
+            <div class="pick3-header">
+              <span class="pick3-badge">🎁 TEST YOUR LUCK (PICK 3) 🎁</span>
+              <h2 class="pick3-title">The 9 Mystery Gift Boxes</h2>
+              <p class="pick3-subtitle">
+                Pick any 3 gift boxes to see what’s in your luck! (6 sweet rewards & 3 empty boxes) ✨<br>
+                <strong style="color: #fde047; font-size: 0.95rem; display: inline-block; margin-top: 6px;">📸 Take a screenshot of your 3 picks and send it to Ansh to redeem them!</strong>
+              </p>
+              
+              <!-- Counter Badge -->
+              <div class="picks-counter-badge" id="picks-counter-badge">
+                <span class="pc-icon">✨</span>
+                <span>PICKS REMAINING: <strong id="picks-count-num">3</strong> / 3</span>
+              </div>
+            </div>
+
+            <!-- 9 Gift Boxes Grid -->
+            <div class="gift-boxes-grid" id="gift-boxes-grid">
+              
+              <!-- Box 1 -->
+              <div class="lucky-gift-box" data-box-id="1">
+                <div class="lgb-front">
+                  <div class="lgb-ribbon-v"></div>
+                  <div class="lgb-ribbon-h"></div>
+                  <div class="lgb-bow">🎀</div>
+                  <span class="lgb-num">#1</span>
+                  <span class="lgb-tap-label">TAP TO OPEN</span>
+                </div>
+                <div class="lgb-revealed">
+                  <span class="lgb-rev-icon">🎁</span>
+                  <h4 class="lgb-rev-title">Reward</h4>
+                  <p class="lgb-rev-desc">Description</p>
+                </div>
+              </div>
+
+              <!-- Box 2 -->
+              <div class="lucky-gift-box" data-box-id="2">
+                <div class="lgb-front">
+                  <div class="lgb-ribbon-v"></div>
+                  <div class="lgb-ribbon-h"></div>
+                  <div class="lgb-bow">🎀</div>
+                  <span class="lgb-num">#2</span>
+                  <span class="lgb-tap-label">TAP TO OPEN</span>
+                </div>
+                <div class="lgb-revealed">
+                  <span class="lgb-rev-icon">🎁</span>
+                  <h4 class="lgb-rev-title">Reward</h4>
+                  <p class="lgb-rev-desc">Description</p>
+                </div>
+              </div>
+
+              <!-- Box 3 -->
+              <div class="lucky-gift-box" data-box-id="3">
+                <div class="lgb-front">
+                  <div class="lgb-ribbon-v"></div>
+                  <div class="lgb-ribbon-h"></div>
+                  <div class="lgb-bow">🎀</div>
+                  <span class="lgb-num">#3</span>
+                  <span class="lgb-tap-label">TAP TO OPEN</span>
+                </div>
+                <div class="lgb-revealed">
+                  <span class="lgb-rev-icon">🎁</span>
+                  <h4 class="lgb-rev-title">Reward</h4>
+                  <p class="lgb-rev-desc">Description</p>
+                </div>
+              </div>
+
+              <!-- Box 4 -->
+              <div class="lucky-gift-box" data-box-id="4">
+                <div class="lgb-front">
+                  <div class="lgb-ribbon-v"></div>
+                  <div class="lgb-ribbon-h"></div>
+                  <div class="lgb-bow">🎀</div>
+                  <span class="lgb-num">#4</span>
+                  <span class="lgb-tap-label">TAP TO OPEN</span>
+                </div>
+                <div class="lgb-revealed">
+                  <span class="lgb-rev-icon">🎁</span>
+                  <h4 class="lgb-rev-title">Reward</h4>
+                  <p class="lgb-rev-desc">Description</p>
+                </div>
+              </div>
+
+              <!-- Box 5 -->
+              <div class="lucky-gift-box" data-box-id="5">
+                <div class="lgb-front">
+                  <div class="lgb-ribbon-v"></div>
+                  <div class="lgb-ribbon-h"></div>
+                  <div class="lgb-bow">🎀</div>
+                  <span class="lgb-num">#5</span>
+                  <span class="lgb-tap-label">TAP TO OPEN</span>
+                </div>
+                <div class="lgb-revealed">
+                  <span class="lgb-rev-icon">🎁</span>
+                  <h4 class="lgb-rev-title">Reward</h4>
+                  <p class="lgb-rev-desc">Description</p>
+                </div>
+              </div>
+
+              <!-- Box 6 -->
+              <div class="lucky-gift-box" data-box-id="6">
+                <div class="lgb-front">
+                  <div class="lgb-ribbon-v"></div>
+                  <div class="lgb-ribbon-h"></div>
+                  <div class="lgb-bow">🎀</div>
+                  <span class="lgb-num">#6</span>
+                  <span class="lgb-tap-label">TAP TO OPEN</span>
+                </div>
+                <div class="lgb-revealed">
+                  <span class="lgb-rev-icon">🎁</span>
+                  <h4 class="lgb-rev-title">Reward</h4>
+                  <p class="lgb-rev-desc">Description</p>
+                </div>
+              </div>
+
+              <!-- Box 7 -->
+              <div class="lucky-gift-box" data-box-id="7">
+                <div class="lgb-front">
+                  <div class="lgb-ribbon-v"></div>
+                  <div class="lgb-ribbon-h"></div>
+                  <div class="lgb-bow">🎀</div>
+                  <span class="lgb-num">#7</span>
+                  <span class="lgb-tap-label">TAP TO OPEN</span>
+                </div>
+                <div class="lgb-revealed">
+                  <span class="lgb-rev-icon">🎁</span>
+                  <h4 class="lgb-rev-title">Reward</h4>
+                  <p class="lgb-rev-desc">Description</p>
+                </div>
+              </div>
+
+              <!-- Box 8 -->
+              <div class="lucky-gift-box" data-box-id="8">
+                <div class="lgb-front">
+                  <div class="lgb-ribbon-v"></div>
+                  <div class="lgb-ribbon-h"></div>
+                  <div class="lgb-bow">🎀</div>
+                  <span class="lgb-num">#8</span>
+                  <span class="lgb-tap-label">TAP TO OPEN</span>
+                </div>
+                <div class="lgb-revealed">
+                  <span class="lgb-rev-icon">🎁</span>
+                  <h4 class="lgb-rev-title">Reward</h4>
+                  <p class="lgb-rev-desc">Description</p>
+                </div>
+              </div>
+
+              <!-- Box 9 -->
+              <div class="lucky-gift-box" data-box-id="9">
+                <div class="lgb-front">
+                  <div class="lgb-ribbon-v"></div>
+                  <div class="lgb-ribbon-h"></div>
+                  <div class="lgb-bow">🎀</div>
+                  <span class="lgb-num">#9</span>
+                  <span class="lgb-tap-label">TAP TO OPEN</span>
+                </div>
+                <div class="lgb-revealed">
+                  <span class="lgb-rev-icon">🎁</span>
+                  <h4 class="lgb-rev-title">Reward</h4>
+                  <p class="lgb-rev-desc">Description</p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- All 3 Rewards Collected Summary Tray -->
+            <div class="pick3-summary-tray" id="pick3-summary-tray" style="display: none;">
+              <div class="pst-header">
+                <span class="pst-badge">📸 PICKS COMPLETE! 📸</span>
+                <h3 class="pst-title">Here Is What Was In Your Luck!</h3>
+                <p class="pst-desc" style="color: #fde047; font-weight: 700; font-size: 1.02rem;">
+                  📸 Take a screenshot of this and send it to Ansh to redeem your rewards! 💕
+                </p>
+              </div>
+
+              <div class="pst-rewards-row" id="pst-rewards-row">
+                <!-- Dynamically populated with the 3 items picked -->
+              </div>
+
+              <div class="pst-actions">
+                <button type="button" class="arcade-btn yes-btn" id="btn-claim-3-rewards">
+                  <span>📸 READY! SEND SCREENSHOT TO ANSH 💬💖</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- 4. THE TOMORROW MYSTERY BOX & SCRATCH QUEST -->
+          <div class="door6-card mystery-quest-card" id="door6-mystery-card">
+            <div class="card-glow-edge"></div>
+            
+            <div class="mq-header">
+              <span class="mq-badge">🎁 SPECIAL TOMORROW MISSION 🎁</span>
+              <h2 class="mq-title">The Tomorrow Mystery Box</h2>
+              <p class="mq-subtitle">A real-world surprise is waiting for you tomorrow... Scratch the golden card below to reveal your unlock condition!</p>
+            </div>
+
+            <!-- Scratch Card Component -->
+            <div class="mystery-scratch-wrap">
+              <div class="scratch-card-box mystery-scratch-box" id="door6-scratch-box">
+                
+                <!-- Underneath: The Revealed Quest -->
+                <div class="mystery-quest-revealed" id="door6-quest-revealed">
+                  <div class="quest-revealed-header">
+                    <span class="quest-crown-icon">👑</span>
+                    <span class="quest-tag">OFFICIAL UNLOCK CONDITION</span>
+                  </div>
+                  <h3 class="quest-main-heading">You will receive your Mystery Box tomorrow... ✨🎁</h3>
+                  <div class="quest-conditions-list">
+                    <div class="condition-item">
+                      <span class="condition-num">1</span>
+                      <div class="condition-desc">
+                        <strong>Gently pat my head</strong>
+                        <span>Hold me close and pamper your boy 🥺</span>
+                      </div>
+                    </div>
+                    <div class="condition-item">
+                      <span class="condition-num">2</span>
+                      <div class="condition-desc">
+                        <strong>Look into my eyes & say "I love yaa"</strong>
+                        <span>Straight from your heart with that cute smile 💖</span>
+                      </div>
+                    </div>
+                    <div class="condition-item">
+                      <span class="condition-num">3</span>
+                      <div class="condition-desc">
+                        <strong>Give me a sweet, tender hand kiss</strong>
+                        <span>Seal the promise on my hand like royalty 💋✨</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="quest-footer-note">
+                    <span>Complete these 3 steps tomorrow, and the Mystery Box is all yours! 💕</span>
+                  </div>
+                </div>
+
+                <!-- Golden Holographic Foil Canvas -->
+                <canvas class="scratch-canvas mystery-scratch-canvas" id="door6-scratch-canvas" width="460" height="340"></canvas>
+              </div>
+
+              <!-- Instant Scratch Button -->
+              <div class="scratch-action-row">
+                <button type="button" class="arcade-btn secondary instant-scratch-btn" id="btn-reveal-door6-scratch">
+                  <span>🪄 Scratch Foil / Reveal Quest 🔓</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 3. THE 3D ENCHANTED MYSTERY GIFT BOX -->
+            <div class="enchanted-giftbox-section">
+              <div class="giftbox-stage" id="mystery-giftbox-stage">
+                <div class="giftbox-glow-aura"></div>
+                <!-- Interactive 3D Gift Box -->
+                <div class="giftbox-interactive" id="mystery-interactive-gift" title="Click me!">
+                  <div class="gift-lid">
+                    <div class="gift-ribbon-horizontal"></div>
+                    <div class="gift-bow">
+                      <span class="bow-loop left"></span>
+                      <span class="bow-knot">🎀</span>
+                      <span class="bow-loop right"></span>
+                    </div>
+                  </div>
+                  <div class="gift-base">
+                    <div class="gift-ribbon-vertical"></div>
+                    <div class="gift-lock-badge">🔒 24h</div>
+                  </div>
+                </div>
+                <p class="giftbox-tap-hint">👆 Tap the Mystery Box for a sneak peek! ✨</p>
+                <div class="giftbox-whisper-bubble" id="giftbox-whisper" style="display: none;">
+                  <span>"Psst... I'm locked until tomorrow! Don't forget the head pat, 'I love yaa', and hand kiss! 😉🎁"</span>
+                </div>
+              </div>
+
+              <!-- Quest Acceptance Action -->
+              <div class="quest-accept-container" id="quest-accept-container">
+                <button type="button" class="arcade-btn yes-btn quest-accept-btn" id="btn-accept-quest">
+                  <span>💖 I ACCEPT THE QUEST & PROMISE! 💖</span>
+                </button>
+                <div class="quest-certified-badge" id="quest-certified-badge" style="display: none;">
+                  <span class="cert-icon">📜✨</span>
+                  <div class="cert-text">
+                    <h4>PROMISE SEALED & REGISTERED! 💕</h4>
+                    <p>Your Mystery Box is officially scheduled for delivery tomorrow. Ansh is eagerly waiting for your head pat and sweet hand kiss!</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Final Forever Journey Banner -->
+          <div class="heart-exit-banner">
+            <span class="exit-icon">💖</span>
+            <p class="exit-text">
+              "No matter how far you go, or which door you close... you will never truly leave my heart. Because you live here, rent-free, for eternity."
+            </p>
+            <span class="exit-sig">— Your lover, best friend, & baby, Ansh 🕊️✨</span>
+          </div>
+
+          <!-- Bottom Navigation Row -->
+          <div class="door6-navigation-row">
+            <button class="arcade-btn secondary" id="btn-back-to-door-5">
+              <span>← Back to Door 5 (Secret Room) 🗝️</span>
+            </button>
+            <button class="arcade-btn primary" id="btn-restart-game">
+              <span>🔄 Revisit All Doors from Door 1 💖</span>
+            </button>
+          </div>
+
+        </div>
+
       </div>
     </section>
 

@@ -23,8 +23,14 @@ $mimeTypes = @{
     ".json" = "application/json; charset=utf-8"
     ".png"  = "image/png"
     ".jpg"  = "image/jpeg"
+    ".jpeg" = "image/jpeg"
     ".svg"  = "image/svg+xml"
     ".ico"  = "image/x-icon"
+    ".mp3"  = "audio/mpeg"
+    ".mpeg" = "audio/mpeg"
+    ".wav"  = "audio/wav"
+    ".ogg"  = "audio/ogg"
+    ".m4a"  = "audio/mp4"
 }
 
 while ($listener.IsListening) {
@@ -48,15 +54,60 @@ while ($listener.IsListening) {
         $contentType = if ($mimeTypes.ContainsKey($ext)) { $mimeTypes[$ext] } else { "application/octet-stream" }
         
         $response.ContentType = $contentType
-        $bytes = [System.IO.File]::ReadAllBytes($filePath)
-        $response.ContentLength64 = $bytes.Length
-        $response.StatusCode = 200
-        $response.OutputStream.Write($bytes, 0, $bytes.Length)
+        $response.AddHeader("Accept-Ranges", "bytes")
+        $fileInfo = New-Object System.IO.FileInfo($filePath)
+        $totalLength = $fileInfo.Length
+
+        # Check for Range header (required for browser audio/video seeking and streaming)
+        $rangeHeader = $request.Headers["Range"]
+        if ($rangeHeader -and $rangeHeader -match "bytes=(\d+)-(\d*)") {
+            $start = [int64]$matches[1]
+            $end = if ($matches[2] -ne "") { [int64]$matches[2] } else { $totalLength - 1 }
+            if ($end -ge $totalLength) { $end = $totalLength - 1 }
+            $length = $end - $start + 1
+
+            $response.StatusCode = 206
+            $response.AddHeader("Content-Range", "bytes $start-$end/$totalLength")
+            $response.ContentLength64 = $length
+
+            if ($request.HttpMethod -ne "HEAD") {
+                try {
+                    $fs = [System.IO.File]::OpenRead($filePath)
+                    [void]$fs.Seek($start, [System.IO.SeekOrigin]::Begin)
+                    $buffer = New-Object byte[] 65536
+                    $bytesRemaining = $length
+                    while ($bytesRemaining -gt 0) {
+                        $bytesToRead = [Math]::Min($bytesRemaining, $buffer.Length)
+                        $bytesRead = $fs.Read($buffer, 0, $bytesToRead)
+                        if ($bytesRead -le 0) { break }
+                        $response.OutputStream.Write($buffer, 0, $bytesRead)
+                        $bytesRemaining -= $bytesRead
+                    }
+                    $fs.Close()
+                } catch {}
+            }
+        } else {
+            $response.StatusCode = 200
+            $response.ContentLength64 = $totalLength
+
+            if ($request.HttpMethod -ne "HEAD") {
+                try {
+                    $fs = [System.IO.File]::OpenRead($filePath)
+                    $buffer = New-Object byte[] 65536
+                    while (($bytesRead = $fs.Read($buffer, 0, $buffer.Length)) -gt 0) {
+                        $response.OutputStream.Write($buffer, 0, $bytesRead)
+                    }
+                    $fs.Close()
+                } catch {}
+            }
+        }
     } else {
         $response.StatusCode = 404
         $msg = [System.Text.Encoding]::UTF8.GetBytes("404 Not Found")
-        $response.OutputStream.Write($msg, 0, $msg.Length)
+        try {
+            $response.OutputStream.Write($msg, 0, $msg.Length)
+        } catch {}
     }
 
-    $response.OutputStream.Close()
+    try { $response.OutputStream.Close() } catch {}
 }
